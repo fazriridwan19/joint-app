@@ -1,0 +1,66 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: core-backend
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:joint_app}
+    username: ${POSTGRES_USERNAME:joint}
+    password: ${POSTGRES_PASSWORD:}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      repositories:
+        enabled: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    properties:
+      hibernate:
+        hbm2ddl:
+          create_namespaces: true
+  sql:
+    init:
+      mode: never
+  ai:
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          options:
+            model: gemini-3.1-flash-lite
+            temperature: 0.0
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+app:
+  openapi:
+    server-url: ${OPENAPI_SERVER_URL:http://localhost:8080}
+  cors:
+    allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
+  refresh-token-store: ${REFRESH_TOKEN_STORE:redis}
+  redis:
+    expiration-seconds: ${REDIS_EXPIRATION:1800}
+  security:
+    jwt:
+      secret: ${JWT_SECRET:VGhpc0lzQVN1ZmZpY2llbnRseUxvbmdTZWNyZXRGb3JEZXZlbG9wbWVudE9ubHk=}
+      access-token-minutes: 15
+
+section-headers:
+  headers:
+    EXPERIENCE:
+      - "work experience"
+      - "experience"
+      - "professional experience"
+    EDUCATION:
+      - "education"
+      - "academic background"
+    PROJECTS:
+      - "projects"
+      - "personal projects"
+    SKILLS:
+      - "skills"
+      - "technical skills"

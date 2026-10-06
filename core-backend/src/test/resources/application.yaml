@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:core_backend;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS identity\;CREATE SCHEMA IF NOT EXISTS app\;CREATE SCHEMA IF NOT EXISTS roadmap\;CREATE SCHEMA IF NOT EXISTS timeline
+    username: sa
+    password:
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          create_namespaces: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      repositories:
+        enabled: false
+  sql:
+    init:
+      mode: never
+app:
+  refresh-token-store: memory
+  redis:
+    expiration-seconds: 1800
+  security:
+    jwt:
+      secret: VGhpc0lzQVN1ZmZpY2llbnRseUxvbmdTZWNyZXRGb3JEZXZlbG9wbWVudE9ubHk=
