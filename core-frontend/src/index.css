@@ -6,15 +6,15 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: oklch(0.922 0 0);
-  --code-bg: #f4f3ec;
-  --accent: oklch(0.97 0 0);
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  --text: #62685f;
+  --text-h: #29312b;
+  --bg: #f4f5f1;
+  --border: #e2e5df;
+  --code-bg: #eff1ec;
+  --accent: #62816b;
+  --accent-bg: rgba(98, 129, 107, 0.1);
+  --accent-border: rgba(98, 129, 107, 0.35);
+  --social-bg: rgba(255, 255, 255, 0.04);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -22,9 +22,9 @@
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  font: 14px/145% var(--sans);
+  letter-spacing: 0.12px;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -36,37 +36,37 @@
     font-size: 16px;
   }
 
-  --background: oklch(1 0 0);
+  --background: #f4f5f1;
 
-  --foreground: oklch(0.145 0 0);
+  --foreground: #29312b;
 
-  --card: oklch(1 0 0);
+  --card: #fffefa;
 
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: #29312b;
 
-  --popover: oklch(1 0 0);
+  --popover: #fffefa;
 
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: #29312b;
 
-  --primary: oklch(0.205 0 0);
+  --primary: #62816b;
 
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: #ffffff;
 
-  --secondary: oklch(0.97 0 0);
+  --secondary: #e9ede7;
 
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: #37433a;
 
-  --muted: oklch(0.97 0 0);
+  --muted: #eef0eb;
 
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #72796f;
 
-  --accent-foreground: oklch(0.205 0 0);
+  --accent-foreground: #ffffff;
 
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: #f07178;
 
-  --input: oklch(0.922 0 0);
+  --input: #dfe3dd;
 
-  --ring: oklch(0.708 0 0);
+  --ring: #829987;
 
   --chart-1: oklch(0.87 0 0);
 
@@ -80,21 +80,21 @@
 
   --radius: 0.625rem;
 
-  --sidebar: oklch(0.985 0 0);
+  --sidebar: #edf0ea;
 
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-foreground: #303a32;
 
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary: #62816b;
 
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary-foreground: #ffffff;
 
-  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent: #e2e8df;
 
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: #303a32;
 
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border: #dce1d9;
 
-  --sidebar-ring: oklch(0.708 0 0)
+  --sidebar-ring: #829987
 }
 
 @theme inline {
@@ -141,37 +141,38 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  color-scheme: light;
+  --background: #f4f5f1;
+  --foreground: #29312b;
+  --card: #fffefa;
+  --card-foreground: #29312b;
+  --popover: #fffefa;
+  --popover-foreground: #29312b;
+  --primary: #62816b;
+  --primary-foreground: #ffffff;
+  --secondary: #e9ede7;
+  --secondary-foreground: #37433a;
+  --muted: #eef0eb;
+  --muted-foreground: #72796f;
+  --accent: #e9ede7;
+  --accent-foreground: #37433a;
+  --destructive: #a5534a;
+  --border: #e2e5df;
+  --input: #dfe3dd;
+  --ring: #829987;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar: #edf0ea;
+  --sidebar-foreground: #303a32;
+  --sidebar-primary: #62816b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e2e8df;
+  --sidebar-accent-foreground: #303a32;
+  --sidebar-border: #dce1d9;
+  --sidebar-ring: #829987;
 }
 
 @layer base {
@@ -216,5 +217,691 @@
   .toast-enter,
   .toast-exit {
     animation-duration: 1ms;
+  }
+}
+
+@layer utilities {
+  .joint-theme,
+  .joint-auth {
+    color-scheme: dark;
+    background: #101116;
+    color: #f2f3f6;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#256b4d]"] {
+    background-color: #b9f36b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#256b4d]"][class*="text-white"] {
+    color: #171a12;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#1b563d]"]:hover {
+    background-color: #a7df59;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#256b4d]"] {
+    color: #b9f36b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="border-[#256b4d]"] {
+    border-color: #789c46;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="focus:border-[#256b4d]"]:focus {
+    border-color: #b9f36b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="focus:ring-[#256b4d1f]"]:focus {
+    --tw-ring-color: rgb(185 243 107 / 22%);
+  }
+
+  :is(.joint-theme, .joint-auth) [class~="bg-white"] {
+    background-color: #191b22;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-white/"] {
+    background-color: rgb(25 27 34 / 92%);
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f4f5f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f6f0]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f6f7]"] {
+    background-color: #101116;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f8faf6]"],
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#f8faf6]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f4ed]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f0ec]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e7eee3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e7ebe3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f7f7f8]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fafafa]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f5f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f2f2f5]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f0f4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#eeeef1]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f1f2f4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#ececf1]"] {
+    background-color: #22242d;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e9e9ff]"] {
+    background-color: #292840;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e8f6d8]"] {
+    background-color: #293222;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fff0d9]"] {
+    background-color: #352c20;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fce6e8]"] {
+    background-color: #38252d;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fff0eb]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fffaf8]"] {
+    background-color: #382326;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#edf5e4]"] {
+    background-color: #293222;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="border-[#d9dfd5]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e7ebe3]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e9e9ed]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e9eaed]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#ebecf0]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#f0f0f2]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#f1c2b6]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#f5e4df]"] {
+    border-color: #2d303a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#17211b]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#20212a]"] {
+    color: #f2f3f6;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#68736a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#4a5c4e]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#39453c]"] {
+    color: #a7a9b4;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#9aaa9e]"] {
+    color: #858894;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#ba442d]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#a64632]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#c64e35]"] {
+    color: #ff8d91;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#6962d9]"] {
+    color: #aaa4ff;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8b31]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8233]"] {
+    color: #b9f36b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#c88832]"] {
+    color: #f2be70;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#d65e6a]"] {
+    color: #ff9aa6;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="border-[#e2e3e8]"] {
+    border-color: #353843;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-blue-50"] {
+    background-color: #29303a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-blue-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-blue-700"] {
+    color: #a9bfd0;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-emerald-50"] {
+    background-color: #303329;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-emerald-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-emerald-700"] {
+    color: #b7c497;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-amber-50"] {
+    background-color: #383126;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-amber-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-amber-700"] {
+    color: #dfbd83;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-red-50"] {
+    background-color: #3a2a27;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-red-500"],
+  :is(.joint-theme, .joint-auth) [class*="text-red-700"] {
+    color: #d99788;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-purple-50"] {
+    background-color: #333127;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-purple-700"] {
+    color: #c3b994;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#20212a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#30313a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#252630]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#24252d]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#464751]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#454653]"] {
+    color: #f2f3f6;
+  }
+
+  :is(.joint-theme, .joint-auth) input,
+  :is(.joint-theme, .joint-auth) textarea,
+  :is(.joint-theme, .joint-auth) select {
+    border-color: #353843;
+    background-color: #17191f;
+    border-radius: 0.75rem;
+    color: #f2f3f6;
+  }
+
+  :is(.joint-theme, .joint-auth) input::placeholder,
+  :is(.joint-theme, .joint-auth) textarea::placeholder {
+    color: #777b87;
+  }
+
+  :is(.joint-theme, .joint-auth) input:focus,
+  :is(.joint-theme, .joint-auth) textarea:focus,
+  :is(.joint-theme, .joint-auth) select:focus {
+    border-color: #b9f36b;
+    box-shadow: 0 0 0 3px rgb(185 243 107 / 16%);
+  }
+
+  :is(.joint-theme, .joint-auth) dialog {
+    border-color: #30333e;
+    background-color: #191b22;
+    color: #f2f3f6;
+    box-shadow: 0 24px 80px rgb(0 0 0 / 55%);
+  }
+
+  :is(.joint-theme, .joint-auth) dialog::backdrop {
+    background-color: rgb(4 5 8 / 72%);
+    backdrop-filter: blur(4px);
+  }
+
+  .joint-theme [class*="rounded-xl"][class*="border"] {
+    border-radius: 1rem;
+  }
+
+  .joint-theme table thead {
+    background-color: #20222a;
+    color: #a7a9b4;
+    letter-spacing: 0.08em;
+  }
+
+  .joint-theme tbody tr {
+    transition: background-color 150ms ease;
+  }
+
+  .joint-theme tbody tr:hover {
+    background-color: #20222a;
+  }
+}
+
+@layer utilities {
+  :is(.joint-theme, .joint-auth) {
+    background-color: #171713;
+    color: #f1eee5;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#256b4d]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#b9f36b]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#68c6b3]"] {
+    background-color: #a8b58a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#256b4d]"][class*="text-white"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#b9f36b]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#68c6b3]"] {
+    color: #191a14;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#1b563d]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#a7df59]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#7bd4c1]"]:hover {
+    background-color: #bac69c;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#b9f36b]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#68c6b3]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#256b4d]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8233]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8b31]"] {
+    color: #b7c497;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="border-[#d9dfd5]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e7ebe3]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e9e9ed]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#ebecf0]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#f0f0f2]"] {
+    border-color: #303946;
+  }
+
+  :is(.joint-theme, .joint-auth) [class~="bg-white"] {
+    background-color: #201f19;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-white/"] {
+    background-color: rgb(32 31 25 / 92%);
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f4f5f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f6f0]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f6f7]"] {
+    background-color: #171713;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f8faf6]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f4ed]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f0ec]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e7eee3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e7ebe3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f7f7f8]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fafafa]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f5f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f2f2f5]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f0f4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#eeeef1]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f1f2f4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#ececf1]"] {
+    background-color: #2a2921;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#b9f36b]/"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#68c6b3]/"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#edf5e4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e8f6d8]"] {
+    background-color: #303329;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#17211b]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#20212a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#30313a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#252630]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#24252d]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#464751]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#454653]"] {
+    color: #f1eee5;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#68736a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#4a5c4e]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#39453c]"] {
+    color: #b7b2a3;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#9aaa9e]"] {
+    color: #969184;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8233]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#7b9d4c]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#719c3c]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#68c6b3]"] {
+    color: #b7c497;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="border-[#e2e3e8]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#256b4d]"] {
+    border-color: #687052;
+  }
+
+  :is(.joint-theme, .joint-auth) input,
+  :is(.joint-theme, .joint-auth) textarea,
+  :is(.joint-theme, .joint-auth) select {
+    border-color: #3a392f;
+    background-color: #1a1a15;
+    color: #f1eee5;
+  }
+
+  :is(.joint-theme, .joint-auth) input:focus,
+  :is(.joint-theme, .joint-auth) textarea:focus,
+  :is(.joint-theme, .joint-auth) select:focus {
+    border-color: #a8b58a;
+    box-shadow: 0 0 0 3px rgb(168 181 138 / 18%);
+  }
+
+  :is(.joint-theme, .joint-auth) dialog {
+    border-color: #3a392f;
+    background-color: #201f19;
+    color: #f1eee5;
+  }
+
+  :is(.joint-theme, .joint-auth) dialog::backdrop {
+    background-color: rgb(10 10 7 / 78%);
+  }
+
+  .joint-theme table thead {
+    background-color: #2a2921;
+    color: #b7b2a3;
+  }
+
+  .joint-theme tbody tr:hover {
+    background-color: #2a2921;
+  }
+}
+
+@layer utilities {
+  :is(.joint-theme, .joint-auth) {
+    color-scheme: light;
+    background-color: #f4f5f1;
+    color: #29312b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class~="bg-white"] {
+    background-color: #fffefa;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-white/"] {
+    background-color: rgb(255 254 250 / 94%);
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f4f5f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f6f0]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f6f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#171713]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#12130f]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#0c1118]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#15161b]"] {
+    background-color: #f4f5f1;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#17181e]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#111217]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#15161c]"] {
+    background-color: #fffefa;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#256b4d]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#b9f36b]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#68c6b3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#a8b58a]"] {
+    background-color: #62816b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#256b4d]"][class*="text-white"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#b9f36b]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#68c6b3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#a8b58a]"] {
+    color: #ffffff;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#1b563d]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#a7df59]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#7bd4c1]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#bac69c]"]:hover {
+    background-color: #526f5a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#256b4d]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#b9f36b]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#68c6b3]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#a8b58a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8233]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#5b8b31]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#7b9d4c]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#719c3c]"] {
+    color: #55745e;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f8faf6]"],
+  :is(.joint-theme, .joint-auth) [class*="hover:bg-[#f8faf6]"]:hover,
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f4ed]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f0ec]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e7eee3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e7ebe3]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f7f7f8]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fafafa]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f5f5f7]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f2f2f5]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f0f4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#eeeef1]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f1f2f4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#ececf1]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#2a2921]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#303329]"] {
+    background-color: #edf0ea;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e9e9ff]"] {
+    background-color: #eeedf5;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fff0d9]"] {
+    background-color: #f4eee1;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fce6e8]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fff0eb]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#fffaf8]"] {
+    background-color: #f5e9e6;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#f0f9f4]"] {
+    background-color: #e7efe8;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-[#edf5e4]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#e8f6d8]"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#b9f36b]/"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#68c6b3]/"],
+  :is(.joint-theme, .joint-auth) [class*="bg-[#a8b58a]/"] {
+    background-color: #e6ede5;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-blue-50"] {
+    background-color: #e8edf2;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-emerald-50"] {
+    background-color: #e7efe8;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-amber-50"] {
+    background-color: #f4eee1;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-red-50"] {
+    background-color: #f5e9e6;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-purple-50"] {
+    background-color: #eeeaf2;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="border-[#d9dfd5]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e7ebe3]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e9e9ed]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e9eaed]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#ebecf0]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#f0f0f2]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#e2e3e8]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#303946]"],
+  :is(.joint-theme, .joint-auth) [class*="border-[#3a392f]"] {
+    border-color: #e2e5df;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#17211b]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#20212a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#30313a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#252630]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#24252d]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#464751]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#454653]"] {
+    color: #29312b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#68736a]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#4a5c4e]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#39453c]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#a2acb8]"],
+  :is(.joint-theme, .joint-auth) [class*="text-[#b7b2a3]"] {
+    color: #62685f;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#9aaa9e]"] {
+    color: #858b81;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#6962d9]"] {
+    color: #6c659d;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#c88832]"] {
+    color: #8c6b36;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-[#d65e6a]"] {
+    color: #a5534a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-white/"] {
+    color: #62685f;
+  }
+
+  :is(.joint-theme, .joint-auth) [class~="text-white"] {
+    color: #29312b;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-blue-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-blue-700"] {
+    color: #506d83;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-emerald-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-emerald-700"] {
+    color: #4f7658;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-amber-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-amber-700"] {
+    color: #8c6b36;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-red-500"],
+  :is(.joint-theme, .joint-auth) [class*="text-red-700"] {
+    color: #a5534a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-purple-700"] {
+    color: #715c82;
+  }
+
+  :is(.joint-theme, .joint-auth) input,
+  :is(.joint-theme, .joint-auth) textarea,
+  :is(.joint-theme, .joint-auth) select {
+    border-color: #dfe3dd;
+    background-color: #fffefa;
+    color: #29312b;
+  }
+
+  :is(.joint-theme, .joint-auth) input::placeholder,
+  :is(.joint-theme, .joint-auth) textarea::placeholder {
+    color: #858b81;
+  }
+
+  :is(.joint-theme, .joint-auth) input:focus,
+  :is(.joint-theme, .joint-auth) textarea:focus,
+  :is(.joint-theme, .joint-auth) select:focus {
+    border-color: #829987;
+    box-shadow: 0 0 0 3px rgb(98 129 107 / 14%);
+  }
+
+  :is(.joint-theme, .joint-auth) dialog {
+    border-color: #e2e5df;
+    background-color: #fffefa;
+    color: #29312b;
+    box-shadow: 0 24px 70px rgb(41 49 43 / 18%);
+  }
+
+  :is(.joint-theme, .joint-auth) dialog::backdrop {
+    background-color: rgb(41 49 43 / 34%);
+    backdrop-filter: blur(3px);
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-blue-50"] {
+    background-color: #e8edf2;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-blue-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-blue-700"] {
+    color: #506d83;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-emerald-50"] {
+    background-color: #e7efe8;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-emerald-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-emerald-700"] {
+    color: #4f7658;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-amber-50"] {
+    background-color: #f4eee1;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-amber-600"],
+  :is(.joint-theme, .joint-auth) [class*="text-amber-700"] {
+    color: #8c6b36;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-red-50"] {
+    background-color: #f5e9e6;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-red-500"],
+  :is(.joint-theme, .joint-auth) [class*="text-red-700"] {
+    color: #a5534a;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="bg-purple-50"] {
+    background-color: #eeeaf2;
+  }
+
+  :is(.joint-theme, .joint-auth) [class*="text-purple-700"] {
+    color: #715c82;
+  }
+
+  .joint-theme table thead {
+    background-color: #edf0ea;
+    color: #62685f;
+  }
+
+  .joint-theme tbody tr:hover {
+    background-color: #f4f6f1;
   }
 }

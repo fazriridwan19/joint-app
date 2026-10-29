@@ -32,6 +32,7 @@ import { useNotes, useCreateNote, useDeleteNote } from "../api/notes-api";
 import { FollowUpSection } from "../../productivity/ui/FollowUpSection";
 import { StageTasksSection } from "../../roadmap/ui/StageTasksSection";
 import { ApplicationForm } from "./ApplicationForm";
+import { CvSection } from "./CvSection";
 import { getApiMessage } from "../../../lib/api-client";
 import { ApiErrorAlert } from "../../../components/ui/api-error-alert";
 import type { ApplicationStatus } from "../../../types/api";
@@ -52,12 +53,13 @@ const ALL_STATUSES: ApplicationStatus[] = [
 ];
 
 // Tabs for the left column
-type Tab = "roadmap" | "stage-tasks" | "followups" | "notes";
+type Tab = "roadmap" | "stage-tasks" | "followups" | "notes" | "cv";
 const TABS: { id: Tab; label: string }[] = [
   { id: "roadmap", label: "Roadmap" },
   { id: "stage-tasks", label: "Stage Tasks" },
   { id: "followups", label: "Follow-up" },
   { id: "notes", label: "Catatan" },
+  { id: "cv", label: "CV" },
 ];
 
 export function ApplicationDetailScreen() {
@@ -155,7 +157,7 @@ export function ApplicationDetailScreen() {
   })();
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto min-w-0 max-w-none">
       {/* Back */}
       <button
         type="button"
@@ -307,9 +309,9 @@ export function ApplicationDetailScreen() {
       </div>
 
       {/* ── Main content ── */}
-      <div className="grid items-start gap-5 lg:grid-cols-[1fr_340px]">
+      <div className="grid min-w-0 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)]">
         {/* Left col — tabbed sections */}
-        <div className="flex flex-col gap-0">
+        <div className="flex min-w-0 flex-col gap-0">
           {/* Tab bar */}
           <div className="flex overflow-x-auto rounded-t-xl border border-b-0 border-[#d9dfd5] bg-white">
             {TABS.map((tab) => (
@@ -330,7 +332,7 @@ export function ApplicationDetailScreen() {
           </div>
 
           {/* Tab panel */}
-          <div className="rounded-b-xl border border-[#d9dfd5] bg-white p-5">
+          <div className="min-w-0 rounded-b-xl border border-[#d9dfd5] bg-white p-5">
             {activeTab === "roadmap" && (
               <RoadmapSection
                 applicationId={id ?? ""}
@@ -406,11 +408,12 @@ export function ApplicationDetailScreen() {
                 )}
               </div>
             )}
+            {activeTab === "cv" && <CvSection applicationId={id ?? ""} />}
           </div>
         </div>
 
         {/* Right col — Timeline */}
-        <div className="self-start rounded-xl border border-[#d9dfd5] bg-white p-5">
+        <div className="min-w-0 self-start rounded-xl border border-[#d9dfd5] bg-white p-5">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#68736a]">
             Timeline
           </h2>
@@ -433,7 +436,7 @@ export function ApplicationDetailScreen() {
                       {event.eventType.replace(/_/g, " ")}
                     </div>
                     {event.description && (
-                      <div className="mt-0.5 text-sm text-[#68736a]">
+                      <div className="mt-0.5 break-words text-sm text-[#68736a]">
                         {event.description}
                       </div>
                     )}

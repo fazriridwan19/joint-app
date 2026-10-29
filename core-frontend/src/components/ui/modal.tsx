@@ -9,7 +9,7 @@ type ModalProps = {
   title: string
   description?: string
   children: ReactNode
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
   footer?: ReactNode
 }
 
@@ -35,6 +35,7 @@ export function Modal({ open, onClose, title, description, children, size = 'md'
     sm: 'max-w-sm',
     md: 'max-w-lg',
     lg: 'max-w-2xl',
+    xl: 'max-w-5xl',
   }
 
   return (
@@ -44,7 +45,7 @@ export function Modal({ open, onClose, title, description, children, size = 'md'
       onClose={onClose}
       className={cn(
         'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 m-0 w-[calc(100%-2rem)]',
-        'rounded-xl border border-[#d9dfd5] bg-white p-0 shadow-xl',
+        'max-h-[90vh] rounded-xl border border-[#d9dfd5] bg-white p-0 shadow-xl',
         'backdrop:bg-black/40 backdrop:backdrop-blur-[2px]',
         'open:flex open:flex-col',
         sizeClasses[size],

@@ -23,7 +23,7 @@ function RequireAuth() {
   const { user, isRestoring } = useAuthStore()
   if (isRestoring) {
     return (
-      <div className="flex min-h-svh items-center justify-center bg-[#f5f6f0]">
+      <div className="joint-theme flex min-h-svh items-center justify-center bg-[#f4f5f7]">
         <Spinner className="size-8" />
       </div>
     )

@@ -75,6 +75,75 @@ export type PriorityLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'
 
 export type StageStatus = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'SKIPPED'
 
+export type CvStatus = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'FAILED'
+export type CvStage = 'EXTRACTION' | 'ANALYZE' | 'RESULT'
+
+export type CvProfileResponse = {
+  id: string
+  applicationId: string
+  name: string
+  email: string
+  fileName: string
+  summary: string | null
+  strengths: string[] | null
+  weaknesses: string[] | null
+  status: CvStatus
+  stage: CvStage
+}
+
+export type CvProfileDetailResponse = CvProfileResponse & {
+  experiences: CvExperienceResponse[] | null
+  projects: CvProjectResponse[] | null
+  skills: CvSkillResponse[] | null
+  educations: CvEducationResponse[] | null
+}
+
+export type CvAnalysisResponse = {
+  profileId: string
+  stage: CvStage
+  status: CvStatus
+  summary: string | null
+  strengths: string[] | null
+  weaknesses: string[] | null
+}
+
+export type CvExperienceResponse = {
+  id: string
+  profileId: string
+  company: string | null
+  position: string | null
+  startDate: string | null
+  endDate: string | null
+  responsibilities: string[] | null
+  technologiesUsed: string[] | null
+}
+
+export type CvProjectResponse = {
+  id: string
+  profileId: string
+  name: string | null
+  description: string | null
+  role: string | null
+  technologiesUsed: string[] | null
+}
+
+export type CvSkillResponse = {
+  technicalSkills: string[] | null
+  softSkills: string[] | null
+  tools: string[] | null
+}
+
+export type CvEducationResponse = {
+  id: string
+  profileId: string
+  institution: string | null
+  degree: string | null
+  fieldOfStudy: string | null
+  startDate: string | null
+  endDate: string | null
+  gpa: string | null
+}
+
 // ─── Application ─────────────────────────────────────────────────────────────
 
 export type ApplicationResponse = {

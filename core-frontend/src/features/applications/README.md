@@ -1,1 +1,1 @@
-Application module: applications, companies, and status management.
+Application module: applications, companies, status management, and CV upload, extraction, analysis, and profile details.
