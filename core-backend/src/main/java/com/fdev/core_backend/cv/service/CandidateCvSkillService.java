@@ -9,8 +9,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fdev.core_backend.cv.api.dto.CandidateCvDtos;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos;
+import com.fdev.core_backend.cv.api.service.ISkillService;
 import com.fdev.core_backend.cv.domain.CandidateCvSkill;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos;
 import com.fdev.core_backend.cv.repository.CandidateCvSkillRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class CandidateCvSkillService {
+public class CandidateCvSkillService implements ISkillService {
 	private final CandidateCvSkillRepository skillRepository;
 
 	@Async("cvTaskExecutor")
@@ -60,5 +62,28 @@ public class CandidateCvSkillService {
 		List<CandidateCvSkill> saved = skillRepository.saveAll(allSkills);
 		log.info("Saved {} skill records for profile {}", saved.size(), profileId);
 		return saved;
+	}
+
+	@SuppressWarnings("null")
+	@Override
+	public CompletableFuture<List<CandidateCvDtos.CvSkillResponse>> getSkillsByProfileIdAsync(UUID profileId) {
+		List<CandidateCvSkill> skills = skillRepository.findByProfileId(profileId);
+		List<String> technicalSkills = skills.stream()
+				.filter(s -> s.getType() == CandidateCvSkill.SkillType.TECHNICAL)
+				.map(CandidateCvSkill::getValue)
+				.toList();
+		List<String> softSkills = skills.stream()
+				.filter(s -> s.getType() == CandidateCvSkill.SkillType.SOFT)
+				.map(CandidateCvSkill::getValue)
+				.toList();
+		List<String> tools = skills.stream()
+				.filter(s -> s.getType() == CandidateCvSkill.SkillType.TOOL)
+				.map(CandidateCvSkill::getValue)
+				.toList();
+		CandidateCvDtos.CvSkillResponse response = new CandidateCvDtos.CvSkillResponse(
+				technicalSkills,
+				softSkills,
+				tools);
+		return CompletableFuture.completedFuture(List.of(response));
 	}
 }

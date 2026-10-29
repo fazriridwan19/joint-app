@@ -16,20 +16,20 @@ import jakarta.persistence.LockModeType;
 import jakarta.persistence.QueryHint;
 
 public interface CandidateCvProfileRepository extends JpaRepository<CandidateCvProfile, UUID> {
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @QueryHints({ @QueryHint(name = "jakarta.persistence.lock.timeout", value = "3000") })
-    @Query("""
-            SELECT p FROM CandidateCvProfile p
-            WHERE p.status = :status
-              AND p.stage = :stage
-              AND p.retryCount < :maxRetry
-            ORDER BY p.createdAt ASC
-            """)
-    List<CandidateCvProfile> findPendingForExtraction(
-            @Param("status") CandidateCvProfile.Status status,
-            @Param("stage") CandidateCvProfile.StageProcess stage,
-            @Param("maxRetry") int maxRetry,
-            Pageable pageable);
+	@Lock(LockModeType.PESSIMISTIC_WRITE)
+	@QueryHints({ @QueryHint(name = "jakarta.persistence.lock.timeout", value = "3000") })
+	@Query("""
+			SELECT p FROM CandidateCvProfile p
+			WHERE p.stage = :stage
+			  AND p.status = :status
+			  AND p.retryCount < :maxRetry
+			ORDER BY p.createdAt ASC
+			""")
+	List<CandidateCvProfile> findProfileByStageAndStatus(
+			@Param("stage") CandidateCvProfile.StageProcess stage,
+			@Param("status") CandidateCvProfile.Status status,
+			@Param("maxRetry") int maxRetry,
+			Pageable pageable);
 
-    List<CandidateCvProfile> findAllByApplicationId(UUID applicationId);
+	List<CandidateCvProfile> findAllByApplicationId(UUID applicationId);
 }

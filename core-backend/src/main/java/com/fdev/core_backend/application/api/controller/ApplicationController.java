@@ -1,4 +1,4 @@
-package com.fdev.core_backend.application.api;
+package com.fdev.core_backend.application.api.controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fdev.core_backend.application.api.dto.ApplicationDtos;
 import com.fdev.core_backend.application.service.ApplicationService;
 import com.fdev.core_backend.identity.domain.UserPrincipal;
 import com.fdev.core_backend.shared.api.ApiResponse;

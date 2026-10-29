@@ -8,8 +8,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fdev.core_backend.cv.api.dto.CandidateCvDtos.CvEducationResponse;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos;
+import com.fdev.core_backend.cv.api.service.IEducationService;
 import com.fdev.core_backend.cv.domain.CandidateCvEducation;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos;
 import com.fdev.core_backend.cv.repository.CandidateCvEducationRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class CandidateCvEducationService {
+public class CandidateCvEducationService implements IEducationService {
 	private final CandidateCvEducationRepository educationRepository;
 
 	@Async("cvTaskExecutor")
@@ -59,5 +61,22 @@ public class CandidateCvEducationService {
 
 		log.info("Saved {} education records for profile {}", saved.size(), profileId);
 		return saved;
+	}
+
+	@Override
+	public CompletableFuture<List<CvEducationResponse>> getEducationResponsesAsync(UUID profileId) {
+		List<CandidateCvEducation> educations = educationRepository.findByProfileId(profileId);
+		List<CvEducationResponse> responses = educations.stream()
+				.map(edu -> new CvEducationResponse(
+						edu.getId(),
+						edu.getProfileId(),
+						edu.getInstitution(),
+						edu.getDegree(),
+						edu.getFieldOfStudy(),
+						edu.getStartDate(),
+						edu.getEndDate(),
+						edu.getGpa()))
+				.toList();
+		return CompletableFuture.completedFuture(responses);
 	}
 }

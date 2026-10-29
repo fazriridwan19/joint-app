@@ -10,8 +10,9 @@ import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.CvCoreExtraction;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.SkillsExtraction;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.CvCoreExtraction;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.SkillsExtraction;
+import com.fdev.core_backend.cv.api.service.ILLMExtractorService;
 import com.fdev.core_backend.shared.api.ApiException;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CvLLMExtractorService {
+public class CvLLMExtractorService implements ILLMExtractorService {
 	private final ChatClient chatClient;
 	private final BeanOutputConverter<CvCoreExtraction> outputConverter = new BeanOutputConverter<>(
 			CvCoreExtraction.class);
@@ -31,12 +32,9 @@ public class CvLLMExtractorService {
 
 			Aturan penting:
 			- Jangan menambahkan informasi yang tidak eksplisit ada di teks.
-			- Jika satu kategori tidak ditemukan sama sekali dalam teks, kembalikan array kosong
-			  untuk kategori itu — jangan mengarang data.
-			- Pastikan setiap item dikategorikan ke section yang tepat; jangan mencampur skill
-			  ke dalam responsibilities pengalaman kerja, atau sebaliknya.
-			- Untuk tanggal, gunakan format sesuai yang tertulis di teks aslinya (jangan menormalisasi
-			  kecuali diminta).
+			- Jika satu kategori tidak ditemukan sama sekali dalam teks, kembalikan array kosong untuk kategori itu — jangan mengarang data.
+			- Pastikan setiap item dikategorikan ke section yang tepat; jangan mencampur skill ke dalam responsibilities pengalaman kerja, atau sebaliknya.
+			- Untuk tanggal, gunakan format sesuai yang tertulis di teks aslinya (jangan menormalisasi kecuali diminta).
 
 			Format output HARUS mengikuti schema berikut:
 			{format}

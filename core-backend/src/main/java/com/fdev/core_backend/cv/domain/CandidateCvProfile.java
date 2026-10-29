@@ -1,6 +1,7 @@
 package com.fdev.core_backend.cv.domain;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -67,6 +68,18 @@ public class CandidateCvProfile {
     @Column(nullable = false, length = 30)
     @Builder.Default
     private StageProcess stage = StageProcess.EXTRACTION;
+
+    @Column(name = "summary", columnDefinition = "TEXT")
+    private String summary;
+
+    @Column(name = "strengths", columnDefinition = "TEXT")
+    private List<String> strengths;
+
+    @Column(name = "weaknesses", columnDefinition = "TEXT")
+    private List<String> weaknesses;
+
+    @Column(name = "improvement_suggestions", columnDefinition = "TEXT")
+    private String improvementSuggestions;
 
     @Column(name = "retry_count", nullable = false)
     @Builder.Default

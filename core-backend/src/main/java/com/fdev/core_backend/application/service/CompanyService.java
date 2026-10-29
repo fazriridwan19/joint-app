@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fdev.core_backend.application.api.ApplicationDtos;
+import com.fdev.core_backend.application.api.dto.ApplicationDtos;
 import com.fdev.core_backend.application.domain.Company;
 import com.fdev.core_backend.application.repository.CompanyRepository;
 import com.fdev.core_backend.shared.api.ApiException;
@@ -35,7 +35,7 @@ public class CompanyService {
     public ApplicationDtos.CompanyResponse updateCompany(UUID userId, UUID companyId,
             ApplicationDtos.CompanyRequest request) {
         Company company = companyRepository.findByIdAndUserId(companyId, userId)
-            .orElseThrow(() -> notFound("Company tidak ditemukan."));
+                .orElseThrow(() -> notFound("Company tidak ditemukan."));
         String name = request.name().trim();
         if (companyRepository.existsByUserIdAndNameIgnoreCaseAndIdNot(userId, name, companyId)) {
             throw new ApiException("DUPLICATE_RESOURCE", HttpStatus.CONFLICT, "Company sudah terdaftar.");
@@ -54,6 +54,12 @@ public class CompanyService {
     @Transactional(readOnly = true)
     public Company getCompany(UUID userId, UUID companyId) {
         return companyRepository.findByIdAndUserId(companyId, userId)
+                .orElseThrow(() -> notFound("Company tidak ditemukan."));
+    }
+
+    @Transactional(readOnly = true)
+    public Company getCompany(UUID companyId) {
+        return companyRepository.findById(companyId)
                 .orElseThrow(() -> notFound("Company tidak ditemukan."));
     }
 

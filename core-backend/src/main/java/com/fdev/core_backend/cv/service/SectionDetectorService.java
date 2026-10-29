@@ -10,17 +10,18 @@ import java.util.stream.Collectors;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.stereotype.Service;
 
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.CvLine;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.DetectedSection;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.ExtractedCv;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.HeaderCandidate;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.CvLine;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.DetectedSection;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.ExtractedCv;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.HeaderCandidate;
+import com.fdev.core_backend.cv.api.service.ISectionDetectorService;
 import com.fdev.core_backend.cv.domain.SectionHeaderProperties;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class SectionDetectorService {
+public class SectionDetectorService implements ISectionDetectorService {
     private final SectionHeaderProperties headerProperties;
     private static final int MAX_HEADER_WORDS = 5;
     private static final int FUZZY_THRESHOLD = 2; // levenshtein distance

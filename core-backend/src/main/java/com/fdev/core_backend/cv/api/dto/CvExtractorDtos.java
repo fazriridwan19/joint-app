@@ -1,6 +1,8 @@
-package com.fdev.core_backend.cv.domain;
+package com.fdev.core_backend.cv.api.dto;
 
 import java.util.List;
+
+import com.fdev.core_backend.cv.domain.SectionHeaderProperties;
 
 public class CvExtractorDtos {
         public record CvLine(

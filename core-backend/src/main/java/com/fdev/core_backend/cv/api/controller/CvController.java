@@ -1,4 +1,4 @@
-package com.fdev.core_backend.cv.api;
+package com.fdev.core_backend.cv.api.controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fdev.core_backend.cv.domain.CandidateCvDtos;
-import com.fdev.core_backend.cv.service.CandidateCvProfileService;
-import com.fdev.core_backend.cv.service.CvOrchestratorService;
+import com.fdev.core_backend.cv.api.dto.CandidateCvDtos;
+import com.fdev.core_backend.cv.api.service.IOrchestratorService;
+import com.fdev.core_backend.cv.api.service.IProfileService;
 import com.fdev.core_backend.identity.domain.UserPrincipal;
 import com.fdev.core_backend.shared.api.ApiResponse;
 
@@ -26,14 +26,14 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/applications/{id}/cv")
 @RequiredArgsConstructor
 public class CvController {
-    private final CvOrchestratorService service;
-    private final CandidateCvProfileService profileService;
+    private final IOrchestratorService orchestratorService;
+    private final IProfileService profileService;
 
     @PostMapping
     ResponseEntity<ApiResponse<CandidateCvDtos.CvProfileResponse>> save(
             @AuthenticationPrincipal UserPrincipal principal, @PathVariable UUID id,
             @RequestParam("file") MultipartFile file) {
-        CandidateCvDtos.CvProfileResponse result = service.saveCvProfile(principal, id, file);
+        CandidateCvDtos.CvProfileResponse result = orchestratorService.saveCvProfile(principal, id, file);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(ApiResponse.success(result));
     }
 
@@ -41,6 +41,20 @@ public class CvController {
     ResponseEntity<ApiResponse<List<CandidateCvDtos.CvProfileResponse>>> list(
             @AuthenticationPrincipal UserPrincipal principal, @PathVariable UUID id) {
         List<CandidateCvDtos.CvProfileResponse> result = profileService.list(id);
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(result));
+    }
+
+    @PostMapping("/{profileId}/analyze")
+    ResponseEntity<ApiResponse<CandidateCvDtos.CvAnalysisResponse>> analyze(
+            @AuthenticationPrincipal UserPrincipal principal, @PathVariable UUID id, @PathVariable UUID profileId) {
+        CandidateCvDtos.CvAnalysisResponse result = orchestratorService.analyzeCvProfile(profileId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(ApiResponse.success(result));
+    }
+
+    @GetMapping("/{profileId}/detail")
+    ResponseEntity<ApiResponse<CandidateCvDtos.CvProfileDetailResponse>> getProfile(
+            @AuthenticationPrincipal UserPrincipal principal, @PathVariable UUID id, @PathVariable UUID profileId) {
+        CandidateCvDtos.CvProfileDetailResponse result = profileService.getProfile(profileId);
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(result));
     }
 }

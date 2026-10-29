@@ -1,5 +1,6 @@
 package com.fdev.core_backend.cv.repository;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.fdev.core_backend.cv.domain.CandidateCvExperience;
 
 public interface CandidateCvExperienceRepository extends JpaRepository<CandidateCvExperience, UUID> {
+    List<CandidateCvExperience> findByProfileId(UUID profileId);
 }

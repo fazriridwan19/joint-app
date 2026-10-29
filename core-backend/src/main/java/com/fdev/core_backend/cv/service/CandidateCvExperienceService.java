@@ -2,15 +2,19 @@ package com.fdev.core_backend.cv.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fdev.core_backend.cv.api.dto.CandidateCvDtos.CvExperienceResponse;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos;
+import com.fdev.core_backend.cv.api.service.IExperienceService;
 import com.fdev.core_backend.cv.domain.CandidateCvExperience;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos;
 import com.fdev.core_backend.cv.domain.ExperienceItem;
 import com.fdev.core_backend.cv.repository.CandidateCvExperienceRepository;
 import com.fdev.core_backend.cv.repository.ExperienceItemRepository;
@@ -22,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class CandidateCvExperienceService {
+public class CandidateCvExperienceService implements IExperienceService {
 	private final CandidateCvExperienceRepository experienceRepository;
 	private final ExperienceItemRepository experienceItemRepository;
 
@@ -105,5 +109,36 @@ public class CandidateCvExperienceService {
 		List<ExperienceItem> saved = experienceItemRepository.saveAll(items);
 		log.info("Saved {} experience items for experience {}", saved.size(), savedExperience.getId());
 		return saved;
+	}
+
+	@SuppressWarnings("null")
+	public CompletableFuture<List<CvExperienceResponse>> getCvExperienceResponsesAsync(UUID profileId) {
+		List<CandidateCvExperience> experiences = experienceRepository.findByProfileId(profileId);
+
+		List<UUID> experienceIds = experiences.stream()
+				.map(CandidateCvExperience::getId)
+				.toList();
+		Map<UUID, List<ExperienceItem>> experienceItemsMap = experienceItemRepository
+				.findByCandidateExperienceIdIn(experienceIds)
+				.stream()
+				.collect(Collectors.groupingBy(ExperienceItem::getCandidateExperienceId));
+		List<CvExperienceResponse> responses = experiences.stream()
+				.map(exp -> new CvExperienceResponse(
+						exp.getId(),
+						exp.getProfileId(),
+						exp.getCompany(),
+						exp.getPosition(),
+						exp.getStartDate(),
+						exp.getEndDate(),
+						experienceItemsMap.getOrDefault(exp.getId(), List.of()).stream()
+								.filter(item -> item.getType() == ExperienceItem.ItemType.RESPONSIBILITY)
+								.map(ExperienceItem::getValue)
+								.toList(),
+						experienceItemsMap.getOrDefault(exp.getId(), List.of()).stream()
+								.filter(item -> item.getType() == ExperienceItem.ItemType.TECHNOLOGY)
+								.map(ExperienceItem::getValue)
+								.toList()))
+				.toList();
+		return CompletableFuture.completedFuture(responses);
 	}
 }

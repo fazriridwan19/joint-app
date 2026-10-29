@@ -14,7 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fdev.core_backend.application.api.ApplicationDtos;
+import com.fdev.core_backend.application.api.dto.ApplicationDtos;
+import com.fdev.core_backend.application.api.service.IApplicationService;
 import com.fdev.core_backend.application.domain.ApplicationEnums.Status;
 import com.fdev.core_backend.application.domain.Company;
 import com.fdev.core_backend.application.domain.JobApplication;
@@ -28,7 +29,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ApplicationService {
+public class ApplicationService implements IApplicationService {
     private final CompanyService companyService;
     private final JobApplicationRepository applicationRepository;
     private final ApplicationEventPublisher eventPublisher;
@@ -84,6 +85,13 @@ public class ApplicationService {
     public ApplicationDtos.ApplicationResponse get(UUID userId, UUID id) {
         JobApplication application = getApplication(userId, id);
         return toApplication(application, companyService.getCompany(userId, application.getCompanyId()));
+    }
+
+    @Transactional(readOnly = true)
+    public ApplicationDtos.ApplicationResponse get(UUID id) {
+        JobApplication application = applicationRepository.findById(id)
+                .orElseThrow(() -> notFound("Application tidak ditemukan."));
+        return toApplication(application, companyService.getCompany(application.getCompanyId()));
     }
 
     public ApplicationDtos.ApplicationResponse update(UUID userId, UUID id,

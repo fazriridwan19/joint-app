@@ -15,12 +15,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.CvLine;
-import com.fdev.core_backend.cv.domain.CvExtractorDtos.ExtractedCv;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.CvLine;
+import com.fdev.core_backend.cv.api.dto.CvExtractorDtos.ExtractedCv;
+import com.fdev.core_backend.cv.api.service.ITextExtractorService;
 import com.fdev.core_backend.shared.api.ApiException;
 
 @Service
-public class CvTextExtractorService {
+public class CvTextExtractorService implements ITextExtractorService {
     public ExtractedCv extract(MultipartFile file) {
         String filename = file.getOriginalFilename();
         if (filename != null && filename.toLowerCase().endsWith(".pdf")) {
@@ -30,7 +31,7 @@ public class CvTextExtractorService {
     }
 
     @SuppressWarnings("null")
-    private ExtractedCv extractFromPdf(MultipartFile file) {
+    public ExtractedCv extractFromPdf(MultipartFile file) {
         try {
             InputStream is = file.getInputStream();
             byte[] pdfBytes = is.readAllBytes();
