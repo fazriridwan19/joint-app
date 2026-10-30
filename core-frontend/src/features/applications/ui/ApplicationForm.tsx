@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Modal } from "../../../components/ui/modal";
-import { Input, Select } from "../../../components/ui/input";
+import { Input, Select, Textarea } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
 import { useCompanies } from "../api/companies-api";
 import {
@@ -64,6 +64,7 @@ export function ApplicationForm({ open, onClose, application }: Props) {
         priority: application.priority,
         jobUrl: application.jobUrl ?? undefined,
         applicationUrl: application.applicationUrl ?? undefined,
+        jobDescription: application.jobDescription ?? undefined,
       });
     } else {
       setForm(emptyForm);
@@ -337,6 +338,14 @@ export function ApplicationForm({ open, onClose, application }: Props) {
             value={form.applicationUrl ?? ""}
             onChange={(e) => set("applicationUrl", e.target.value || undefined)}
             placeholder="https://..."
+          />
+          <Textarea
+            label="Deskripsi Pekerjaan"
+            value={form.jobDescription ?? ""}
+            onChange={(e) =>
+              set("jobDescription", e.target.value || undefined)
+            }
+            placeholder="Tambahkan deskripsi atau ringkasan pekerjaan..."
           />
 
           {error && (

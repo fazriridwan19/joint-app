@@ -28,25 +28,25 @@ export function AuthScreen() {
 
   return (
     <main className="joint-auth grid min-h-svh bg-[#f4f5f7] md:grid-cols-[minmax(380px,0.95fr)_1.05fr]">
-      <section className="relative hidden min-h-svh flex-col justify-between overflow-hidden bg-[#e6ede5] px-10 py-9 text-[#29312b] md:flex md:px-[6vw]">
-        <div className="pointer-events-none absolute -right-36 -bottom-48 size-[500px] rounded-full border border-[#55745e]/10" />
-        <div className="pointer-events-none absolute -right-16 -bottom-28 size-[340px] rounded-full border border-[#55745e]/10" />
-        <div className="pointer-events-none absolute right-[-10px] bottom-[-80px] size-[180px] rounded-full bg-[#a8b58a]/20 blur-[70px]" />
+      <section className="relative hidden min-h-svh flex-col justify-between overflow-hidden bg-[#fff1e8] px-10 py-9 text-[#333238] md:flex md:px-[6vw]">
+        <div className="pointer-events-none absolute -right-36 -bottom-48 size-[500px] rounded-full border border-[#fc6d26]/10" />
+        <div className="pointer-events-none absolute -right-16 -bottom-28 size-[340px] rounded-full border border-[#fc6d26]/10" />
+        <div className="pointer-events-none absolute right-[-10px] bottom-[-80px] size-[180px] rounded-full bg-[#fc6d26]/10 blur-[70px]" />
 
         <div className="relative z-10 inline-flex items-center gap-3">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-[#a8b58a] text-[#191a14]">
+          <span className="flex size-9 items-center justify-center rounded-xl bg-[#fc6d26] text-white">
             <BriefcaseBusiness size={19} strokeWidth={2.5} />
           </span>
-          <span className="text-[19px] font-semibold tracking-[-0.04em]">joint<span className="text-[#a8b58a]">.</span></span>
+          <span className="text-[19px] font-semibold tracking-[-0.04em]">joint<span className="text-[#fc6d26]">.</span></span>
         </div>
 
         <div className="relative z-10 max-w-[500px] py-12">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#55745e]/15 bg-white/55 px-3 py-1.5 text-[10px] font-medium tracking-wide text-[#62685f]">
-            <Sparkles size={13} className="text-[#a8b58a]" />
+            <Sparkles size={13} className="text-[#fc6d26]" />
             WORKSPACE UNTUK PERJALANAN KARIERMU
           </div>
           <h1 className="text-[clamp(42px,5.2vw,72px)] font-semibold leading-[0.99] tracking-[-0.065em]">
-            Kesempatan baru, <span className="text-[#a8b58a]">lebih terarah.</span>
+            Kesempatan baru, <span className="text-[#fc6d26]">lebih terarah.</span>
           </h1>
           <p className="mt-6 max-w-[390px] text-[14px] leading-7 text-[#62685f]">
             Satukan setiap lamaran, kenalan, dan langkah berikutnya dalam satu workspace yang rapi.
@@ -54,17 +54,17 @@ export function AuthScreen() {
 
           <div className="mt-12 grid max-w-[430px] grid-cols-2 gap-3">
             {['Pantau proses lamaran', 'Siapkan tahap berikutnya', 'Simpan kontak penting', 'Jaga momentum'].map((item) => (
-              <div key={item} className="flex items-center gap-2.5 rounded-xl border border-[#55745e]/10 bg-white/45 px-3 py-3">
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#a8b58a]/15 text-[#a8b58a]">
+              <div key={item} className="flex items-center gap-2.5 rounded-xl border border-[#fc6d26]/10 bg-white/70 px-3 py-3">
+                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#fc6d26]/10 text-[#d34b1f]">
                   <Check size={12} />
                 </span>
-                <span className="text-[10px] font-medium text-[#62685f]">{item}</span>
+                <span className="text-[10px] font-medium text-[#626168]">{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative z-10 flex items-center justify-between border-t border-[#55745e]/15 pt-5 text-[10px] text-[#858b81]">
+        <div className="relative z-10 flex items-center justify-between border-t border-[#fc6d26]/15 pt-5 text-[10px] text-[#737278]">
           <span>Ruang kerja untuk langkah selanjutnya.</span>
           <span>JOINT WORKSPACE</span>
         </div>
@@ -73,17 +73,17 @@ export function AuthScreen() {
       <section className="grid min-h-svh place-items-center px-5 py-10 sm:px-10">
         <div className="w-full max-w-[390px]">
           <div className="mb-12 inline-flex items-center gap-2.5 md:hidden">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-[#201f19] text-[#a8b58a]">
+            <span className="flex size-9 items-center justify-center rounded-xl bg-[#fff1e8] text-[#fc6d26]">
               <BriefcaseBusiness size={18} />
             </span>
-            <span className="text-[18px] font-semibold tracking-[-0.04em] text-[#20212a]">joint<span className="text-[#a8b58a]">.</span></span>
+            <span className="text-[18px] font-semibold tracking-[-0.04em] text-[#333238]">joint<span className="text-[#fc6d26]">.</span></span>
           </div>
 
           <div className="rounded-[24px] border border-[#e9e9ed] bg-white p-6 shadow-[0_24px_70px_-45px_rgba(27,29,39,0.28)] sm:p-9">
-            <div className="mb-5 inline-flex size-10 items-center justify-center rounded-xl bg-[#303329] text-[#a8b58a]">
+            <div className="mb-5 inline-flex size-10 items-center justify-center rounded-xl bg-[#fff1e8] text-[#fc6d26]">
               <BriefcaseBusiness size={18} />
             </div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#7b9d4c]">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#d34b1f]">
               {mode === 'login' ? 'Selamat datang kembali' : 'Mulai workspace-mu'}
             </div>
             <h2 className="mt-2 text-[28px] font-semibold leading-tight tracking-[-0.05em] text-[#20212a]">
@@ -100,7 +100,7 @@ export function AuthScreen() {
                 <label className="grid gap-1.5 text-[11px] font-medium text-[#555762]">
                   Nama lengkap
                   <input
-                    className="w-full rounded-xl border border-[#3a392f] bg-[#1a1a15] px-3.5 py-3 text-[12px] text-[#f1eee5] outline-none transition focus:border-[#a8b58a] focus:ring-4 focus:ring-[#a8b58a]/20"
+                    className="w-full rounded-xl border border-[#dcdcde] bg-white px-3.5 py-3 text-[12px] text-[#333238] outline-none transition focus:border-[#fc6d26] focus:ring-4 focus:ring-[#fc6d26]/15"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     autoComplete="name"
@@ -111,7 +111,7 @@ export function AuthScreen() {
               <label className="grid gap-1.5 text-[11px] font-medium text-[#555762]">
                 Email
                 <input
-                  className="w-full rounded-xl border border-[#3a392f] bg-[#1a1a15] px-3.5 py-3 text-[12px] text-[#f1eee5] outline-none transition focus:border-[#a8b58a] focus:ring-4 focus:ring-[#a8b58a]/20"
+                  className="w-full rounded-xl border border-[#dcdcde] bg-white px-3.5 py-3 text-[12px] text-[#333238] outline-none transition focus:border-[#fc6d26] focus:ring-4 focus:ring-[#fc6d26]/15"
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
@@ -122,7 +122,7 @@ export function AuthScreen() {
               <label className="grid gap-1.5 text-[11px] font-medium text-[#555762]">
                 Password
                 <input
-                  className="w-full rounded-xl border border-[#3a392f] bg-[#1a1a15] px-3.5 py-3 text-[12px] text-[#f1eee5] outline-none transition focus:border-[#a8b58a] focus:ring-4 focus:ring-[#a8b58a]/20"
+                  className="w-full rounded-xl border border-[#dcdcde] bg-white px-3.5 py-3 text-[12px] text-[#333238] outline-none transition focus:border-[#fc6d26] focus:ring-4 focus:ring-[#fc6d26]/15"
                   type="password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
@@ -133,7 +133,7 @@ export function AuthScreen() {
               </label>
               {error && <ApiErrorAlert error={error} />}
               <Button
-                className="mt-1 h-11 w-full rounded-xl bg-[#a8b58a] text-[12px] font-medium text-[#191a14] hover:bg-[#bac69c]"
+                className="mt-1 h-11 w-full rounded-xl bg-[#fc6d26] text-[12px] font-medium text-white hover:bg-[#e24329]"
                 type="submit"
                 disabled={isLoading}
               >
@@ -144,7 +144,7 @@ export function AuthScreen() {
 
             <div className="mt-6 border-t border-[#f0f0f2] pt-5 text-center">
               <button
-                className="text-[11px] font-medium text-[#b7b2a3] transition-colors hover:text-[#a8b58a]"
+                className="text-[11px] font-medium text-[#626168] transition-colors hover:text-[#d34b1f]"
                 type="button"
                 onClick={() => {
                   setMode(mode === 'login' ? 'register' : 'login')
@@ -152,7 +152,7 @@ export function AuthScreen() {
                 }}
               >
                 {mode === 'login' ? 'Belum punya akun? ' : 'Sudah punya akun? '}
-                <span className="text-[#a8b58a]">{mode === 'login' ? 'Daftar' : 'Masuk'}</span>
+                <span className="text-[#d34b1f]">{mode === 'login' ? 'Daftar' : 'Masuk'}</span>
               </button>
             </div>
           </div>

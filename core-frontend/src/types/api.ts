@@ -162,6 +162,7 @@ export type ApplicationResponse = {
   priority: PriorityLevel
   jobUrl: string | null
   applicationUrl: string | null
+  jobDescription: string | null
   archived: boolean
   createdAt: string
   updatedAt: string
@@ -181,6 +182,7 @@ export type ApplicationRequest = {
   priority?: PriorityLevel
   jobUrl?: string
   applicationUrl?: string
+  jobDescription?: string
 }
 
 export type ApplicationPatchRequest = Omit<ApplicationRequest, 'companyId' | 'position' | 'appliedDate'> & {

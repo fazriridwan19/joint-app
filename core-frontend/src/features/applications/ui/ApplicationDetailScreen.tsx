@@ -6,6 +6,7 @@ import {
   Building2,
   CalendarDays,
   ChevronDown,
+  ChevronUp,
   ExternalLink,
   MapPin,
   Pencil,
@@ -69,6 +70,7 @@ export function ApplicationDetailScreen() {
   const [activeTab, setActiveTab] = useState<Tab>("roadmap");
   const [showEdit, setShowEdit] = useState(false);
   const [showStatusMenu, setShowStatusMenu] = useState(false);
+  const [showJobDescription, setShowJobDescription] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [noteContent, setNoteContent] = useState("");
   const [noteError, setNoteError] = useState("");
@@ -303,6 +305,36 @@ export function ApplicationDetailScreen() {
               >
                 <ExternalLink size={13} /> Portal Lamaran
               </a>
+            )}
+          </div>
+        )}
+
+        {application.jobDescription?.trim() && (
+          <div className="mt-4 border-t border-[#d9dfd5] pt-3">
+            <button
+              type="button"
+              aria-expanded={showJobDescription}
+              aria-controls="job-description-content"
+              onClick={() => setShowJobDescription((visible) => !visible)}
+              className="flex items-center gap-1.5 text-sm font-medium text-[#256b4d] hover:underline"
+            >
+              {showJobDescription ? (
+                <>
+                  <ChevronUp size={15} /> Sembunyikan deskripsi pekerjaan
+                </>
+              ) : (
+                <>
+                  <ChevronDown size={15} /> Tampilkan deskripsi pekerjaan
+                </>
+              )}
+            </button>
+            {showJobDescription && (
+              <div
+                id="job-description-content"
+                className="mt-3 whitespace-pre-wrap text-sm leading-6 text-[#4a5c4e]"
+              >
+                {application.jobDescription}
+              </div>
             )}
           </div>
         )}

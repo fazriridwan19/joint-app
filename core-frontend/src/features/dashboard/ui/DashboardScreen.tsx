@@ -18,18 +18,18 @@ import { useDashboardSummary, useDashboardFunnel, useDashboardUpcoming } from '.
 import { useAuthStore } from '../../auth/model/auth-store'
 
 const metricCards = [
-  { label: 'Total lamaran', key: 'totalApplications', icon: BriefcaseBusiness, color: 'bg-[#2c2d27] text-[#c3b994]' },
-  { label: 'Masih aktif', key: 'activeApplications', icon: CircleDot, color: 'bg-[#303329] text-[#b7c497]' },
-  { label: 'Interview', key: 'interviews', icon: Clock3, color: 'bg-[#383126] text-[#dfbd83]' },
-  { label: 'Penawaran', key: 'offers', icon: Handshake, color: 'bg-[#3a2a27] text-[#d99788]' },
+  { label: 'Total lamaran', key: 'totalApplications', icon: BriefcaseBusiness, color: 'bg-[#fff1e8] text-[#d34b1f]' },
+  { label: 'Masih aktif', key: 'activeApplications', icon: CircleDot, color: 'bg-[#eaf3ec] text-[#34734a]' },
+  { label: 'Interview', key: 'interviews', icon: Clock3, color: 'bg-[#f4eee1] text-[#9a5c19]' },
+  { label: 'Penawaran', key: 'offers', icon: Handshake, color: 'bg-[#eeedf5] text-[#6b5b95]' },
 ] as const
 
 const funnelColors = [
-  'bg-[#8da995]',
-  'bg-[#9caec0]',
-  'bg-[#c6a978]',
-  'bg-[#c58d80]',
-  'bg-[#7e997d]',
+  'bg-[#fc6d26]',
+  'bg-[#e24329]',
+  'bg-[#6b5b95]',
+  'bg-[#428fd2]',
+  'bg-[#34734a]',
 ]
 
 export function DashboardScreen() {
@@ -79,7 +79,7 @@ export function DashboardScreen() {
         </div>
         <Button
           onClick={() => navigate('/applications')}
-          className="h-10 self-start rounded-xl bg-[#17181e] px-4 text-[12px] font-medium text-white hover:bg-[#30313a] sm:self-auto"
+          className="h-10 self-start rounded-xl bg-[#fc6d26] px-4 text-[12px] font-medium text-white hover:bg-[#e24329] sm:self-auto"
         >
           <Plus size={15} /> Tambah lamaran
         </Button>
@@ -162,7 +162,7 @@ export function DashboardScreen() {
           </div>
           <div className="flex items-center justify-between border-t border-[#e2e5df] px-5 py-3.5 sm:px-7">
             <span className="text-[10px] text-[#858b81]">Ringkasan konversi proses rekrutmen</span>
-            <span className="flex items-center gap-1.5 text-[10px] font-medium text-[#a8b58a]">
+            <span className="flex items-center gap-1.5 text-[10px] font-medium text-[#fc6d26]">
               <CheckCircle2 size={13} /> Data terbaru
             </span>
           </div>
@@ -178,7 +178,7 @@ export function DashboardScreen() {
           </div>
           <div className="space-y-4 px-5 py-5">
             {[
-              { label: 'Aktif', value: summary?.activeApplications, color: 'bg-[#a8b58a]' },
+              { label: 'Aktif', value: summary?.activeApplications, color: 'bg-[#fc6d26]' },
               { label: 'Assessment', value: summary?.assessments, color: 'bg-[#9c94fa]' },
               { label: 'Offer', value: summary?.offers, color: 'bg-[#f5b667]' },
               { label: 'Hired', value: summary?.hired, color: 'bg-[#73cdb5]' },
@@ -230,7 +230,7 @@ export function DashboardScreen() {
             <p className="mt-1 text-[11px] text-[#999ba5]">Mulai catat lamaran untuk melihat progresnya di sini.</p>
             <Button
               onClick={() => navigate('/applications')}
-              className="mt-4 h-9 rounded-xl bg-[#17181e] px-3.5 text-[11px] text-white hover:bg-[#30313a]"
+              className="mt-4 h-9 rounded-xl bg-[#fc6d26] px-3.5 text-[11px] text-white hover:bg-[#e24329]"
             >
               <Plus size={14} /> Tambah lamaran
             </Button>

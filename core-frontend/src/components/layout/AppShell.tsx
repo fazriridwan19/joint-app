@@ -55,16 +55,16 @@ export function AppShell() {
 
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-[248px] flex-col border-r border-[#dce1d9] bg-[#edf0ea] text-[#303a32] transition-transform duration-200 md:translate-x-0',
+          'fixed inset-y-0 left-0 z-40 flex w-[248px] flex-col border-r border-[#dcdcde] bg-[#fafafa] text-[#333238] transition-transform duration-200 md:translate-x-0',
           mobileNavOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
-        <div className="flex h-[76px] shrink-0 items-center justify-between border-b border-[#dce1d9] px-6">
+        <div className="flex h-[76px] shrink-0 items-center justify-between border-b border-[#dcdcde] px-6">
           <Link to="/dashboard" className="flex items-center gap-3" aria-label="Joint dashboard">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-[#a8b58a] text-[#191a14]">
+            <span className="flex size-9 items-center justify-center rounded-xl bg-[#fc6d26] text-white">
               <BriefcaseBusiness size={19} strokeWidth={2.5} />
             </span>
-            <span className="text-[19px] font-semibold tracking-[-0.04em]">joint<span className="text-[#a8b58a]">.</span></span>
+            <span className="text-[19px] font-semibold tracking-[-0.04em]">joint<span className="text-[#fc6d26]">.</span></span>
           </Link>
           <button
             type="button"
@@ -77,7 +77,7 @@ export function AppShell() {
         </div>
 
         <div className="px-4 pt-7">
-          <p className="px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#858b81]">
+          <p className="px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737278]">
             Workspace
           </p>
           <nav className="flex flex-col gap-1">
@@ -90,8 +90,8 @@ export function AppShell() {
                   cn(
                     'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium transition-colors',
                     isActive
-                      ? 'bg-[#a8b58a] text-[#191a14]'
-                      : 'text-white/60 hover:bg-white/[0.07] hover:text-white',
+                      ? 'bg-[#fff1e8] text-[#333238]'
+                      : 'text-[#626168] hover:bg-[#f0f0f0] hover:text-[#333238]',
                   )
                 }
               >
@@ -102,21 +102,21 @@ export function AppShell() {
           </nav>
         </div>
 
-        <div className="mt-auto border-t border-[#dce1d9] p-4">
-          <div className="mb-3 flex items-center gap-3 rounded-xl bg-white/70 p-3">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#e2e8df] text-xs font-semibold text-[#55745e]">
+        <div className="mt-auto border-t border-[#dcdcde] p-4">
+          <div className="mb-3 flex items-center gap-3 rounded-xl bg-white p-3">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#fff1e8] text-xs font-semibold text-[#d34b1f]">
               {user.name.slice(0, 1).toUpperCase()}
             </span>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-[12px] font-medium text-[#303a32]">{user.name}</p>
-              <p className="truncate text-[10px] text-[#858b81]">Personal workspace</p>
+              <p className="truncate text-[12px] font-medium text-[#333238]">{user.name}</p>
+              <p className="truncate text-[10px] text-[#737278]">Personal workspace</p>
             </div>
-            <ChevronDown size={15} className="text-[#858b81]" />
+            <ChevronDown size={15} className="text-[#737278]" />
           </div>
           <button
             type="button"
             onClick={() => void handleLogout()}
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-medium text-[#62685f] transition-colors hover:bg-white/70 hover:text-[#29312b]"
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[12px] font-medium text-[#626168] transition-colors hover:bg-white hover:text-[#333238]"
           >
             <LogOut size={16} />
             Keluar
