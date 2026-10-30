@@ -1,4 +1,4 @@
-package com.fdev.core_backend.application.service;
+package com.fdev.core_backend.company.service;
 
 import java.util.UUID;
 
@@ -8,21 +8,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fdev.core_backend.application.api.dto.ApplicationDtos;
-import com.fdev.core_backend.application.domain.Company;
-import com.fdev.core_backend.application.repository.CompanyRepository;
+import com.fdev.core_backend.company.api.dto.CompanyDtos;
+import com.fdev.core_backend.company.api.service.ICompanyService;
+import com.fdev.core_backend.company.domain.Company;
+import com.fdev.core_backend.company.repository.CompanyRepository;
 import com.fdev.core_backend.shared.api.ApiException;
 
 @Service
 @Transactional
-public class CompanyService {
+public class CompanyService implements ICompanyService {
     private final CompanyRepository companyRepository;
 
     public CompanyService(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
 
-    public ApplicationDtos.CompanyResponse createCompany(UUID userId, ApplicationDtos.CompanyRequest request) {
+    public CompanyDtos.CompanyResponse createCompany(UUID userId, CompanyDtos.CompanyRequest request) {
         if (companyRepository.existsByUserIdAndNameIgnoreCase(userId, request.name().trim())) {
             throw new ApiException("DUPLICATE_RESOURCE", HttpStatus.CONFLICT, "Company sudah terdaftar.");
         }
@@ -32,8 +33,8 @@ public class CompanyService {
         return this.toDto(companyRepository.save(company));
     }
 
-    public ApplicationDtos.CompanyResponse updateCompany(UUID userId, UUID companyId,
-            ApplicationDtos.CompanyRequest request) {
+    public CompanyDtos.CompanyResponse updateCompany(UUID userId, UUID companyId,
+            CompanyDtos.CompanyRequest request) {
         Company company = companyRepository.findByIdAndUserId(companyId, userId)
                 .orElseThrow(() -> notFound("Company tidak ditemukan."));
         String name = request.name().trim();
@@ -46,25 +47,25 @@ public class CompanyService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ApplicationDtos.CompanyResponse> listCompanies(UUID userId, String query, Pageable pageable) {
+    public Page<CompanyDtos.CompanyResponse> listCompanies(UUID userId, String query, Pageable pageable) {
         return companyRepository.findByUserIdAndNameContainingIgnoreCase(userId, query == null ? "" : query, pageable)
                 .map(this::toDto);
     }
 
     @Transactional(readOnly = true)
-    public Company getCompany(UUID userId, UUID companyId) {
-        return companyRepository.findByIdAndUserId(companyId, userId)
-                .orElseThrow(() -> notFound("Company tidak ditemukan."));
+    public CompanyDtos.CompanyResponse getCompany(UUID userId, UUID companyId) {
+        return toDto(companyRepository.findByIdAndUserId(companyId, userId)
+                .orElseThrow(() -> notFound("Company tidak ditemukan.")));
     }
 
     @Transactional(readOnly = true)
-    public Company getCompany(UUID companyId) {
-        return companyRepository.findById(companyId)
-                .orElseThrow(() -> notFound("Company tidak ditemukan."));
+    public CompanyDtos.CompanyResponse getCompany(UUID companyId) {
+        return toDto(companyRepository.findById(companyId)
+                .orElseThrow(() -> notFound("Company tidak ditemukan.")));
     }
 
-    public ApplicationDtos.CompanyResponse toDto(Company company) {
-        return new ApplicationDtos.CompanyResponse(company.getId(), company.getName(), company.getWebsite(),
+    public CompanyDtos.CompanyResponse toDto(Company company) {
+        return new CompanyDtos.CompanyResponse(company.getId(), company.getName(), company.getWebsite(),
                 company.getCareerUrl(), company.getIndustry(), company.getLocation(), company.getDescription(),
                 company.getLogoUrl(), company.getNotes(), company.getCreatedAt());
     }

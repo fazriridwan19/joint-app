@@ -1,4 +1,4 @@
-package com.fdev.core_backend.application.domain;
+package com.fdev.core_backend.company.domain;
 
 import java.time.Instant;
 import java.util.UUID;

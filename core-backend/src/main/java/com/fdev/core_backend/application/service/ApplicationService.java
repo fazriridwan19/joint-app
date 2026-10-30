@@ -17,9 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fdev.core_backend.application.api.dto.ApplicationDtos;
 import com.fdev.core_backend.application.api.service.IApplicationService;
 import com.fdev.core_backend.application.domain.ApplicationEnums.Status;
-import com.fdev.core_backend.application.domain.Company;
 import com.fdev.core_backend.application.domain.JobApplication;
 import com.fdev.core_backend.application.repository.JobApplicationRepository;
+import com.fdev.core_backend.company.api.dto.CompanyDtos;
+import com.fdev.core_backend.company.api.service.ICompanyService;
 import com.fdev.core_backend.shared.api.ApiException;
 import com.fdev.core_backend.shared.event.ApplicationCreatedEvent;
 import com.fdev.core_backend.shared.event.ApplicationStatusChangedEvent;
@@ -30,7 +31,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 public class ApplicationService implements IApplicationService {
-    private final CompanyService companyService;
+    private final ICompanyService companyService;
     private final JobApplicationRepository applicationRepository;
     private final ApplicationEventPublisher eventPublisher;
 
@@ -55,9 +56,9 @@ public class ApplicationService implements IApplicationService {
                 .jobDescription(request.jobDescription())
                 .applicationUrl(request.applicationUrl())
                 .build());
-        Company company = companyService.getCompany(userId, application.getCompanyId());
+        CompanyDtos.CompanyResponse company = companyService.getCompany(userId, application.getCompanyId());
         eventPublisher.publishEvent(
-                new ApplicationCreatedEvent(application.getId(), userId, company.getName(), application.getPosition()));
+                new ApplicationCreatedEvent(application.getId(), userId, company.name(), application.getPosition()));
         return toApplication(application, company);
     }
 
@@ -176,8 +177,8 @@ public class ApplicationService implements IApplicationService {
         }
     }
 
-    private ApplicationDtos.ApplicationResponse toApplication(JobApplication a, Company c) {
-        return new ApplicationDtos.ApplicationResponse(a.getId(), a.getCompanyId(), c.getName(), a.getPosition(),
+    private ApplicationDtos.ApplicationResponse toApplication(JobApplication a, CompanyDtos.CompanyResponse c) {
+        return new ApplicationDtos.ApplicationResponse(a.getId(), a.getCompanyId(), c.name(), a.getPosition(),
                 a.getAppliedDate(), a.getStatus(), a.getLocation(), a.getEmploymentType(), a.getWorkArrangement(),
                 a.getSalaryRangeMin(), a.getSalaryRangeMax(), a.getSource(), a.getJobDescription(), a.getPriority(),
                 a.getJobUrl(),

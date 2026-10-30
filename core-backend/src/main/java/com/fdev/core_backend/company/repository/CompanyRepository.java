@@ -1,6 +1,6 @@
-package com.fdev.core_backend.application.repository;
+package com.fdev.core_backend.company.repository;
 
-import com.fdev.core_backend.application.domain.Company;
+import com.fdev.core_backend.company.domain.Company;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

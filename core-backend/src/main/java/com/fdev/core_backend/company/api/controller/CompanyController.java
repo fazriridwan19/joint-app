@@ -1,4 +1,4 @@
-package com.fdev.core_backend.application.api.controller;
+package com.fdev.core_backend.company.api.controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,52 +19,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fdev.core_backend.application.api.dto.ApplicationDtos;
-import com.fdev.core_backend.application.service.CompanyService;
+import com.fdev.core_backend.company.api.dto.CompanyDtos;
+import com.fdev.core_backend.company.api.service.ICompanyService;
 import com.fdev.core_backend.identity.domain.UserPrincipal;
 import com.fdev.core_backend.shared.api.ApiResponse;
 import com.fdev.core_backend.shared.api.PaginationMeta;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class CompanyController {
-    private final CompanyService service;
-
-    public CompanyController(CompanyService companyService) {
-        this.service = companyService;
-    }
+    private final ICompanyService service;
 
     @PostMapping("/companies")
-    ResponseEntity<ApiResponse<ApplicationDtos.CompanyResponse>> createCompany(
+    ResponseEntity<ApiResponse<CompanyDtos.CompanyResponse>> createCompany(
             @AuthenticationPrincipal UserPrincipal principal,
-            @Valid @RequestBody ApplicationDtos.CompanyRequest request) {
+            @Valid @RequestBody CompanyDtos.CompanyRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(service.createCompany(principal.getId(), request)));
     }
 
     @PatchMapping("/companies/{id}")
-    ApiResponse<ApplicationDtos.CompanyResponse> updateCompany(
+    ApiResponse<CompanyDtos.CompanyResponse> updateCompany(
             @AuthenticationPrincipal UserPrincipal principal,
             @PathVariable UUID id,
-            @Valid @RequestBody ApplicationDtos.CompanyRequest request) {
+            @Valid @RequestBody CompanyDtos.CompanyRequest request) {
         return ApiResponse.success(service.updateCompany(principal.getId(), id, request));
     }
 
     @GetMapping("/companies")
-    ApiResponse<List<ApplicationDtos.CompanyResponse>> companies(@AuthenticationPrincipal UserPrincipal principal,
+    ApiResponse<List<CompanyDtos.CompanyResponse>> companies(@AuthenticationPrincipal UserPrincipal principal,
             @RequestParam(defaultValue = "") String q, @RequestParam(defaultValue = "1") int page,
             @RequestParam(name = "page_size", defaultValue = "20") int pageSize) {
-        Page<ApplicationDtos.CompanyResponse> result = service.listCompanies(principal.getId(), q,
+        Page<CompanyDtos.CompanyResponse> result = service.listCompanies(principal.getId(), q,
                 pageRequest(page, pageSize));
         return new ApiResponse<>(true, result.getContent(), null, pagination(result));
     }
 
     @GetMapping("/companies/{id}")
-    ApiResponse<ApplicationDtos.CompanyResponse> company(@AuthenticationPrincipal UserPrincipal principal,
+    ApiResponse<CompanyDtos.CompanyResponse> company(@AuthenticationPrincipal UserPrincipal principal,
             @PathVariable UUID id) {
-        return ApiResponse.success(service.toDto(service.getCompany(principal.getId(), id)));
+        return ApiResponse.success(service.getCompany(principal.getId(), id));
     }
 
     private Pageable pageRequest(int page, int pageSize) {
